@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
-import "./home.css"; 
+import { useNavigate } from "react-router-dom";
+import "./home.css";
 
 const HomePage = () => {
   const [menuItems, setMenuItems] = useState([]);
   const [error, setError] = useState("");
 
-  // Fetch menu items when the component mounts
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
         const response = await fetch("http://localhost:5000/menu");
         if (!response.ok) throw new Error("Failed to fetch menu items");
         const data = await response.json();
+        console.log(data);
         setMenuItems(data);
       } catch (err) {
         setError(err.message);
@@ -21,37 +24,68 @@ const HomePage = () => {
     fetchMenuItems();
   }, []);
 
+  const groupedMenuItems = menuItems.reduce((acc, item) => {
+    if (!acc[item.type]) {
+      acc[item.type] = [];
+    }
+    acc[item.type].push(item);
+    return acc;
+  }, {});
+
+  const renderMenuGroup = (type, items) => (
+    <div key={type} className="menu-group">
+      <h3 className="menu-group-title">{type}</h3>
+      <table className="menu-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((item) => (
+            <tr key={item.id}>
+              <td className="menu-item-name">{item.name}</td>
+              <td className="menu-item-description">{item.description}</td>
+              <td className="menu-item-price">${item.price.toFixed(2)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+
   return (
     <div className="homepage">
-      {/* Navbar */}
       <nav className="navbar">
-        <div className="navbar-logo">Reservation System</div>
+        <div className="navbar-logo">Restaurant</div>
         <div className="navbar-links">
-          <a href="/login">Login</a>
-          <a href="/register">Register</a>
+          <a onClick={() => navigate('/login')}>Login</a>
+          <a onClick={() => navigate('/register')}>Register</a>
         </div>
       </nav>
 
-      {/* Main Content */}
-      <main className="menu-section">
-        <h1>Menu</h1>
-        {error && <p className="error">{error}</p>}
-        <div className="menu-items">
-          {menuItems.length > 0 ? (
-            menuItems.map((item) => (
-              <div key={item.id} className="menu-item">
-                <h2>{item.name}</h2>
-                <p>{item.description}</p>
-                <p className="price">${item.price}</p>
-              </div>
-            ))
-          ) : (
-            <p>Loading menu items...</p>
-          )}
+      <section className="hero-section fade-in">
+        <div className="hero-content">
+          <h1>Welcome to our Restaurant</h1>
         </div>
+      </section>
+
+      <main className="menu-section fade-in">
+        <h2>The Menu</h2>
+        {error && <p className="error">{error}</p>}
+        {menuItems.length > 0 ? (
+          Object.entries(groupedMenuItems).map(([type, items]) =>
+            renderMenuGroup(type, items)
+          )
+        ) : (
+          <p>Loading menu items...</p>
+        )}
       </main>
     </div>
   );
 };
 
 export default HomePage;
+

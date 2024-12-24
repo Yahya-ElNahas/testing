@@ -4,7 +4,7 @@ import Cart from './pages/customer/cart';
 import FeedbackPage from './pages/customer/feedback';
 import MenuPage from './pages/customer/menuPage';
 import ReservationPage from './pages/customer/reserve';
-import UserForm from './components/UserForm';
+import RegisterPage from './components/register';
 import LoginPage from './components/login';
 import AdminDashboard from './components/AdminDashboard';
 import CustomerDashboard from './components/CustomerDashboard';
@@ -21,7 +21,7 @@ const App = () => {
       <Route path="/customer/feedback" element={<FeedbackPage />} />
       <Route path="/customer/menu" element={<MenuPage />} />
       <Route path="/customer/reserve" element={<ReservationPage />} />
-      <Route path="/register" element={<UserForm />} />
+      <Route path="/register" element={<RegisterPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/admin/dashboard" element={<AdminDashboard />} />
       <Route path="/customer/dashboard" element={<CustomerDashboard />} />

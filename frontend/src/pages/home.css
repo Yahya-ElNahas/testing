@@ -1,82 +1,166 @@
-/* General Styling */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+  --primary-color: #ff6b6b;
+  --secondary-color: #4ecdc4;
+  --background-color: #1a1a1a;
+  --surface-color: #2c2c2c;
+  --text-color: #e0e0e0;
+  --text-color-light: #a0a0a0;
+}
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-  }
-  
-  /* Navbar Styling */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 2rem;
-  }
-  
-  .navbar-logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .navbar-links a {
-    color: #fff;
-    text-decoration: none;
-    margin-left: 1rem;
-  }
-  
-  .navbar-links a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Menu Section Styling */
-  .menu-section {
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  .menu-section h1 {
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
-    color: #333;
-  }
-  
-  .menu-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-  }
-  
-  .menu-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    width: 250px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .menu-item h2 {
-    margin: 0.5rem 0;
-    font-size: 1.25rem;
-    color: #555;
-  }
-  
-  .menu-item p {
-    margin: 0.25rem 0;
-    color: #777;
-  }
-  
-  .menu-item .price {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .error {
-    color: red;
-    font-weight: bold;
-  }
-  
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+.homepage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background-color: var(--surface-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.navbar-links a {
+  margin-left: 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.navbar-links a:hover {
+  color: var(--primary-color);
+}
+
+.hero-section {
+  background-image: url('https://source.unsplash.com/1600x900/?restaurant,food');
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.menu-section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menu-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+}
+
+.menu-group {
+  margin-bottom: 3rem;
+}
+
+.menu-group-title {
+  font-size: 1.8rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.menu-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 1rem;
+}
+
+.menu-table th {
+  text-align: left;
+  padding: 1rem;
+  background-color: var(--surface-color);
+  color: var(--primary-color);
+}
+
+.menu-table td {
+  padding: 1rem;
+  background-color: var(--surface-color);
+}
+
+.menu-table tr {
+  transition: transform 0.3s ease;
+}
+
+.menu-table tr:hover {
+  transform: translateY(-5px);
+}
+
+.menu-item-name {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.menu-item-description {
+  color: var(--text-color-light);
+}
+
+.menu-item-price {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.error {
+  color: #ff4757;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-out;
+}
