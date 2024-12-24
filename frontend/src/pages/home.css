@@ -1,0 +1,82 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 2rem;
+  }
+  
+  .navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1rem;
+  }
+  
+  .navbar-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Menu Section Styling */
+  .menu-section {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .menu-section h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .menu-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  
+  .menu-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 250px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .menu-item h2 {
+    margin: 0.5rem 0;
+    font-size: 1.25rem;
+    color: #555;
+  }
+  
+  .menu-item p {
+    margin: 0.25rem 0;
+    color: #777;
+  }
+  
+  .menu-item .price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+  }
+  
